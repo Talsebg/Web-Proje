@@ -229,8 +229,6 @@
 </head>
 <body>
 
-  <!-- Header -->
-  <!-- Header -->
   <header>
     <div class="logo">
       <a href="index.html">
@@ -260,7 +258,6 @@
   </header>
 
 
-  <!-- İlan Detayları -->
   <div class="page-content">
     <div class="listing-wrapper" id="ilan-detay">
       <p>Yükleniyor...</p>
@@ -302,17 +299,14 @@
       }
     }
 
-    // Detay verisini çek
     const params = new URLSearchParams(window.location.search);
     const ilanId = params.get("id");
     const container = document.getElementById("ilan-detay");
 
-    // Eğer ilanId yoksa, hata mesajı göster
     if (!ilanId) {
       container.innerHTML = "<p>Geçersiz ilan ID'si. Lütfen geçerli bir ilan seçin.</p>";
     }
 
-    // İlan verisini JSON'dan çek
     fetch("ilanlar.json")
       .then(res => res.json())
       .then(data => {
@@ -323,10 +317,8 @@
           return;
         }
 
-        // İl, İlçe ve Satıcı bilgilerini doğru şekilde çek
         const { resim, ilanAdi, detaylar, fiyat, il, ilanTarihi, saticiAd, saticiTelefon, saticiEmail, saticiAdres } = ilan;
 
-        // İlan detaylarını yerleştirme
         container.innerHTML = `  
           <div class="listing-detail">
             <img src="${resim}" alt="${ilanAdi}" />
